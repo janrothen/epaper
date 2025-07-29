@@ -2,10 +2,7 @@
 
 import os, sys
 
-import re
-import time
 from time import sleep
-
 from random import randint
 
 from utils.config import config

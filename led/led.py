@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-# Switches LED bar on/off 
+# Main script
+# Turns the LED strip on/off with a color configured in config.conf
 
 import os, sys
 import signal

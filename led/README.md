@@ -1,8 +1,9 @@
 # LED
 
+Raspberry Pi project to control an RGB LED strip based on the time of day using scheduled tasks and systemd services.
+
 ### led.py
-Switches LED bar on according the time of the day and
-with the color specified in config.conf
+Turns on the LED strip with a color configured in config.conf.
 
 https://danidudas.medium.com/how-to-connect-rgb-strip-led-lights-to-raspberry-pi-zero-w-and-control-from-node-js-70ddfec19f0b
 
