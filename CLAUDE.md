@@ -27,22 +27,10 @@ config.toml          # runtime config (service endpoint)
 pyproject.toml       # packaging and dependencies
 ```
 
-## Install & run
+## Dev/test
 ```bash
-# On Raspberry Pi (with hardware deps):
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[rpi]"
-python -m epaper
-
-# Dev/test (no GPIO hardware needed):
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 pytest
-```
-
-If you get permission errors on SPI/GPIO devices, add your user to the required groups (then log out and back in):
-```bash
-sudo usermod -aG spi,gpio $USER
 ```
