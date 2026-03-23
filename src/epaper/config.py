@@ -1,8 +1,11 @@
-import tomllib
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib  # type: ignore[no-redef]
 from pathlib import Path
 
 _CONFIG_PATH = Path(__file__).parents[2] / "config.toml"
-_config: dict | None = None
+_config = None
 
 
 def config() -> dict:

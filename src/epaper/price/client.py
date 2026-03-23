@@ -6,7 +6,7 @@ from epaper.http_client import HttpClient
 
 
 class BitcoinPriceClient:
-    def retrieve_data(self) -> dict | None:
+    def retrieve_data(self):
         endpoint = config()["bitcoin"]["price"]["service_endpoint"]
         try:
             result = HttpClient().get(endpoint)

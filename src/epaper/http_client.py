@@ -15,16 +15,16 @@ class HttpClient:
     def get(self, url: str) -> str:
         return self._perform(Method.GET, url)
 
-    def post(self, url: str, json_data: dict | None = None) -> str:
+    def post(self, url: str, json_data=None) -> str:
         return self._perform(Method.POST, url, json_data)
 
-    def put(self, url: str, json_data: dict | None = None) -> str:
+    def put(self, url: str, json_data=None) -> str:
         return self._perform(Method.PUT, url, json_data)
 
     def delete(self, url: str) -> str:
         return self._perform(Method.DELETE, url)
 
-    def _perform(self, method: Method, url: str, json_data: dict | None = None) -> str:
+    def _perform(self, method: Method, url: str, json_data=None) -> str:
         data = json.dumps(json_data) if json_data else None
 
         if method == Method.GET:
