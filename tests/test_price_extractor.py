@@ -1,9 +1,7 @@
 import unittest
 
-# run the unit test with
-# python3 -m unittest test_price_extractor.py
+from epaper.price.extractor import PriceExtractor
 
-from PriceExtractor import PriceExtractor
 
 class TestPriceExtractor(unittest.TestCase):
     def setUp(self):
@@ -23,6 +21,7 @@ class TestPriceExtractor(unittest.TestCase):
         self.assertEqual(self.extractor.format_price(999), "$999.000")
         self.assertEqual(self.extractor.format_price(123.45), "$123.000")
         self.assertEqual(self.extractor.format_price(0.99), "$0.000")
+
 
 if __name__ == "__main__":
     unittest.main()
