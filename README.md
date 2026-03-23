@@ -1,34 +1,43 @@
 # E-Paper Bitcoin Price Ticker
 
-An e-paper Bitcoin price ticker that displays the current price of Bitcoin using a Waveshare e-ink display on a Raspberry Pi 5.
+Displays the current Bitcoin/USD price on a Waveshare 2.13" e-ink display (epd2in13 V2) connected to a Raspberry Pi. On startup it shows a Bitcoin logo, then enters a loop that refreshes the price every 5 minutes. The background alternates randomly between black and white on each refresh.
 
-## Prerequisites
-```
-python3
-python3-pip
-```
-Other requirements will be installed from [requirements.txt](requirements.txt).
+## Requirements
 
-## Installing
-```
-python3 -m venv .venv
+- Raspberry Pi (tested on Pi 5)
+- Waveshare 2.13" e-ink display (epd2in13 V2)
+- Python 3.9+
+
+## Install & run
+
+```bash
+python -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements.txt
+pip install -e ".[rpi]"
+python -m epaper
 ```
 
-## Start In Background (survives logout)
+If you get permission errors on SPI/GPIO devices, add your user to the required groups (then log out and back in):
 ```bash
-cd ~/raspberry
-source .venv/bin/activate
-nohup python run.py >/tmp/epaper.log 2>&1 &
+sudo usermod -aG spi,gpio $USER
 ```
 
-Check logs:
+## Run as a systemd service (auto-start on boot, auto-restart on failure)
+
 ```bash
-tail -f /tmp/epaper.log
+# Install the service unit
+sudo cp epaper.service /etc/systemd/system/
+sudo systemctl daemon-reload
+
+# Enable (start on boot) and start immediately
+sudo systemctl enable --now epaper
+
+# Check status / logs
+systemctl status epaper
+journalctl -u epaper -f
 ```
 
-Stop:
+To stop and disable auto-start:
 ```bash
-pkill -f "python run.py"
+sudo systemctl disable --now epaper
 ```
