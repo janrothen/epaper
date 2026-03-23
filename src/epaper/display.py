@@ -89,7 +89,9 @@ class PriceTicker:
                 price = self.price_extractor.formatted_price_from_data(
                     self.price_client.retrieve_data()
                 )
-                draw.text((50, 33), price, font=font, fill=fg)
+                x = self.width // 2
+                y = self.height // 2
+                draw.text((x, y), price, font=font, fill=fg, anchor="mm")
 
                 self._epd.display(self._epd.getbuffer(frame))
                 self._epd.sleep()
