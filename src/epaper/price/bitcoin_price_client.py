@@ -12,7 +12,7 @@ RETRY_DELAY = 5  # seconds between attempts
 
 
 class BitcoinPriceClient:
-    def retrieve_data(self):
+    def retrieve_data(self) -> dict | None:
         endpoint = config()["bitcoin"]["price"]["service_endpoint"]
         for attempt in range(1, MAX_RETRIES + 1):
             try:
