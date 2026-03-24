@@ -11,7 +11,7 @@ os.environ.setdefault("GPIOZERO_PIN_FACTORY", config().get("gpiozero", {}).get("
 from epaper.display import Display
 from epaper.price.client import BitcoinPriceClient
 from epaper.price.extractor import PriceExtractor
-from epaper.ticker import PriceTicker
+from epaper.price_ticker import PriceTicker
 from epaper.utils.graceful_shutdown import GracefulShutdown
 from epaper.utils.watchdog import sd_notify
 
