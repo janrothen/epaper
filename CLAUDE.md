@@ -11,16 +11,18 @@ Displays the current Bitcoin/USD price on a Waveshare 2.13" e-ink display (epd2i
 ```
 src/epaper/          # installable package
   __main__.py        # entry point: python -m epaper
-  display.py         # e-paper display logic (PriceTicker)
+  display.py         # hardware abstraction (Display)
+  price_ticker.py    # orchestration: price updates and rendering (PriceTicker)
   config.py          # config loader (tomllib + config.toml)
   http_client.py     # HTTP wrapper
   price/             # price fetching and formatting
-    client.py
-    extractor.py
+    bitcoin_price_client.py
+    price_extractor.py
     mock.py          # test fixture client
   utils/
     graceful_shutdown.py
-  lib/               # Waveshare display drivers
+    watchdog.py      # systemd sd_notify integration
+  lib/               # Waveshare display drivers (fallback when pip package unavailable)
   media/             # fonts and images
 tests/
 config.toml          # runtime config (service endpoint)
