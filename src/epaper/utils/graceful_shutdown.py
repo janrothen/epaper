@@ -2,7 +2,6 @@
 
 import signal
 from types import FrameType
-from typing import Optional
 
 
 class GracefulShutdown:
@@ -32,6 +31,6 @@ class GracefulShutdown:
         signal.signal(signal.SIGINT, self._exit)
         signal.signal(signal.SIGTERM, self._exit)
 
-    def _exit(self, signum: int, frame: Optional[FrameType]) -> None:
+    def _exit(self, signum: int, frame: FrameType | None) -> None:
         print(f"Received signal {signum}, shutting down...")  # logging isn't fully reentrant inside signal handlers
         self.kill_now = True
