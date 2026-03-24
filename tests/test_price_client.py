@@ -6,7 +6,7 @@ from unittest.mock import patch, MagicMock, call
 import requests
 
 from epaper.price.client import BitcoinPriceClient, MAX_RETRIES, RETRY_DELAY
-from epaper.price.extractor import PriceExtractor
+from epaper.price.price_extractor import PriceExtractor
 from epaper.price.mock import BitcoinPriceClientMock
 
 FIXTURE = Path(__file__).parent / "mock_data.json"
