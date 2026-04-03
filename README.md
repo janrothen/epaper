@@ -5,7 +5,6 @@
 ![Python](https://img.shields.io/badge/python-3.13%2B-blue)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=janrothen_e-paper&metric=alert_status)](https://sonarcloud.io/project/overview?id=janrothen_e-paper)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=janrothen_e-paper&metric=bugs)](https://sonarcloud.io/project/overview?id=janrothen_e-paper)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=janrothen_e-paper&metric=code_smells)](https://sonarcloud.io/project/overview?id=janrothen_e-paper)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=janrothen_e-paper&metric=coverage)](https://sonarcloud.io/project/overview?id=janrothen_e-paper)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=janrothen_e-paper&metric=security_rating)](https://sonarcloud.io/project/overview?id=janrothen_e-paper)
 
