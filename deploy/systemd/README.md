@@ -1,10 +1,10 @@
 # systemd service unit
 
-`epaper.service` runs the Bitcoin price ticker as a systemd service, enabling auto-start on boot and auto-restart on failure.
+`btcticker.service` runs the Bitcoin price ticker as a systemd service, enabling auto-start on boot and auto-restart on failure.
 
 ## Before installing
 
-Open `epaper.service` and adjust these three fields to match your setup:
+Open `btcticker.service` and adjust these three fields to match your setup:
 
 | Field | Example |
 |---|---|
@@ -16,19 +16,19 @@ Open `epaper.service` and adjust these three fields to match your setup:
 
 ```bash
 # Install the service unit
-sudo cp deploy/systemd/epaper.service /etc/systemd/system/
+sudo cp deploy/systemd/btcticker.service /etc/systemd/system/
 sudo systemctl daemon-reload
 
 # Enable (start on boot) and start immediately
-sudo systemctl enable --now epaper
+sudo systemctl enable --now btcticker
 
 # Check status / logs
-systemctl status epaper
-journalctl -u epaper -f
+systemctl status btcticker
+journalctl -u btcticker -f
 ```
 
 To stop and disable auto-start:
 
 ```bash
-sudo systemctl disable --now epaper
+sudo systemctl disable --now btcticker
 ```

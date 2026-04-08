@@ -27,7 +27,7 @@ src/epaper/          # installable package
 tests/
 deploy/
   systemd/
-    epaper.service   # systemd unit for auto-start on boot
+    btcticker.service   # systemd unit for auto-start on boot
     README.md        # installation instructions
 config.toml          # runtime config (service endpoint)
 pyproject.toml       # packaging and dependencies
