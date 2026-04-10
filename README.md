@@ -16,6 +16,8 @@ Displays the current Bitcoin/USD price on a Waveshare 2.13" e-ink display (epd2i
 - Raspberry Pi (tested on Pi 4 Model B Rev 1.4)
 - Waveshare 2.13" e-ink display (epd2in13 V2)
 
+The guide [How to connect a Waveshare E-Ink display to a Raspberry Pi](https://janrothen.github.io/btc-ticker/raspberry-pi-waveshare-epaper-bitcoin-ticker.html) shows how to physically connect the Waveshare 2.13" e-ink display to a Raspberry Pi.
+
 **Software**
 - Python 3.13+
 - pip dependencies: `requests`, `Pillow` (see `pyproject.toml`)
