@@ -71,25 +71,34 @@
     pin numbers or the GPIO labels — but don't mix them. The full reference is in the
     <a href="https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT_Manual#Working_With_Raspberry_Pi" target="_blank" rel="noopener">Waveshare wiki</a>.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Display pin</th>
-        <th>Physical pin</th>
-        <th>GPIO / function</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>VCC</td><td>Pin 17</td><td>3.3 V power</td></tr>
-      <tr><td>GND</td><td>Pin 20</td><td>Ground</td></tr>
-      <tr><td>DIN</td><td>Pin 19</td><td>GPIO 10 / MOSI</td></tr>
-      <tr><td>CLK</td><td>Pin 23</td><td>GPIO 11 / SCLK</td></tr>
-      <tr><td>CS</td><td>Pin 24</td><td>GPIO 8 / CE0</td></tr>
-      <tr><td>DC</td><td>Pin 22</td><td>GPIO 25</td></tr>
-      <tr><td>RST</td><td>Pin 11</td><td>GPIO 17</td></tr>
-      <tr><td>BUSY</td><td>Pin 18</td><td>GPIO 24</td></tr>
-    </tbody>
-  </table>
+  <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; margin: 20px 0;">
+    <div style="text-align: center; flex-shrink: 0;">
+      <img src="images/2.13inch-e-paper-hat-4_3.png" alt="Back of the Waveshare 2.13inch e-Paper HAT showing the pin labels VCC GND DIN CLK CS DC RST BUSY next to the cable connector"
+        style="width: 200px; height: auto; border: 1px solid #ddd; border-radius: 5px;">
+      <p style="font-style: italic; color: #666; font-size: 0.85em;">Pin labels printed on the back of the display</p>
+    </div>
+    <div>
+      <table style="margin: 0; font-size: 0.85em;">
+        <thead>
+          <tr>
+            <th>Display pin</th>
+            <th>Physical pin</th>
+            <th>GPIO / function</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>VCC</td><td>Pin 17</td><td>3.3 V power</td></tr>
+          <tr><td>GND</td><td>Pin 20</td><td>Ground</td></tr>
+          <tr><td>DIN</td><td>Pin 19</td><td>GPIO 10 / MOSI</td></tr>
+          <tr><td>CLK</td><td>Pin 23</td><td>GPIO 11 / SCLK</td></tr>
+          <tr><td>CS</td><td>Pin 24</td><td>GPIO 8 / CE0</td></tr>
+          <tr><td>DC</td><td>Pin 22</td><td>GPIO 25</td></tr>
+          <tr><td>RST</td><td>Pin 11</td><td>GPIO 17</td></tr>
+          <tr><td>BUSY</td><td>Pin 18</td><td>GPIO 24</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <div style="text-align: center; margin: 20px 0;">
     <img src="images/GPIO-40-pin-header.png" alt="Raspberry Pi 40-pin GPIO header pinout"
