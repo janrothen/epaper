@@ -41,7 +41,7 @@ def main() -> None:
     try:
         ticker.start()
         sd_notify("READY=1")
-        while not shutdown.kill_now:
+        while not shutdown.should_stop:
             ticker.tick()
             sd_notify("WATCHDOG=1")
     except Exception as ex:
