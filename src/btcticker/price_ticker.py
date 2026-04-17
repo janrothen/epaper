@@ -30,11 +30,18 @@ class PriceTicker:
         self.price_client = price_client
         self.price_extractor = price_extractor
         self._refresh_interval = refresh_interval
+        self._started = False
         self._stopped = False
         self._last_refresh = float("-inf")  # guarantees refresh on first tick()
 
     def start(self) -> None:
-        """Display the intro image and pause before the price loop begins."""
+        """Display the intro image and pause before the price loop begins.
+
+        No-op on repeated calls.
+        """
+        if self._started:
+            return
+        self._started = True
         self.display.show(self.renderer.render_intro())
         time.sleep(INTRO_PAUSE_SECONDS)
 

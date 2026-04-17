@@ -50,6 +50,14 @@ class TestPriceTickerStart(unittest.TestCase):
 
         mock_sleep.assert_called_once_with(INTRO_PAUSE_SECONDS)
 
+    def test_start_is_idempotent(self):
+        with patch("btcticker.price_ticker.time.sleep"):
+            self.ticker.start()
+            self.ticker.start()
+
+        self.mock_renderer.render_intro.assert_called_once_with()
+        self.mock_display.show.assert_called_once()
+
 
 class TestPriceTickerStop(unittest.TestCase):
     def setUp(self) -> None:

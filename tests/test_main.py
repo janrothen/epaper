@@ -54,8 +54,10 @@ class TestMain(unittest.TestCase):
         self.mock_sd_notify = MagicMock()
         self.mock_shutdown = MagicMock()
 
-    def _run(self, kill_now_sequence, **kwargs):
-        type(self.mock_shutdown).kill_now = PropertyMock(side_effect=kill_now_sequence)
+    def _run(self, should_stop_sequence, **kwargs):
+        type(self.mock_shutdown).should_stop = PropertyMock(
+            side_effect=should_stop_sequence
+        )
         _run_main(self.mock_ticker, self.mock_shutdown, self.mock_sd_notify, **kwargs)
 
     def test_ticker_start_is_called(self):
@@ -65,7 +67,7 @@ class TestMain(unittest.TestCase):
     def test_display_opened_before_ticker_start(self):
         mock_display_cls = MagicMock()
         mock_display = mock_display_cls.return_value
-        type(self.mock_shutdown).kill_now = PropertyMock(return_value=True)
+        type(self.mock_shutdown).should_stop = PropertyMock(return_value=True)
         _run_main(
             self.mock_ticker,
             self.mock_shutdown,
@@ -95,14 +97,14 @@ class TestMain(unittest.TestCase):
 
     def test_ticker_stop_called_on_exception(self):
         self.mock_ticker.start.side_effect = RuntimeError("boom")
-        type(self.mock_shutdown).kill_now = PropertyMock(return_value=True)
+        type(self.mock_shutdown).should_stop = PropertyMock(return_value=True)
         with self.assertRaises(SystemExit):
             _run_main(self.mock_ticker, self.mock_shutdown, self.mock_sd_notify)
         self.mock_ticker.stop.assert_called_once()
 
     def test_sys_exit_1_on_exception(self):
         self.mock_ticker.start.side_effect = RuntimeError("boom")
-        type(self.mock_shutdown).kill_now = PropertyMock(return_value=True)
+        type(self.mock_shutdown).should_stop = PropertyMock(return_value=True)
         with self.assertRaises(SystemExit) as ctx:
             _run_main(self.mock_ticker, self.mock_shutdown, self.mock_sd_notify)
         self.assertEqual(ctx.exception.code, 1)
@@ -118,7 +120,7 @@ class TestMain(unittest.TestCase):
             }
         }
         mock_extractor_cls = MagicMock()
-        type(self.mock_shutdown).kill_now = PropertyMock(return_value=True)
+        type(self.mock_shutdown).should_stop = PropertyMock(return_value=True)
         with (
             patch("btcticker.__main__.Display"),
             patch("btcticker.__main__.FrameRenderer"),
@@ -142,7 +144,7 @@ class TestMain(unittest.TestCase):
         mock_display.width = 250
         mock_display.height = 122
         mock_renderer_cls = MagicMock()
-        type(self.mock_shutdown).kill_now = PropertyMock(return_value=True)
+        type(self.mock_shutdown).should_stop = PropertyMock(return_value=True)
         _run_main(
             self.mock_ticker,
             self.mock_shutdown,
@@ -155,7 +157,7 @@ class TestMain(unittest.TestCase):
     def test_service_endpoint_passed_to_price_client(self):
         cfg = {"bitcoin": {"price": {"service_endpoint": "https://my.ticker/api"}}}
         mock_client_cls = MagicMock()
-        type(self.mock_shutdown).kill_now = PropertyMock(return_value=True)
+        type(self.mock_shutdown).should_stop = PropertyMock(return_value=True)
         _run_main(
             self.mock_ticker,
             self.mock_shutdown,
